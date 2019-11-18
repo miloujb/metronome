@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import click1 from "./Clicks/click1.wav";
+import click2 from "./Clicks/click2.wav";
 
 class Metronome extends Component {
   constructor(props) {
@@ -9,6 +11,8 @@ class Metronome extends Component {
       bpm: 120,
       beatsPerMeasure: 4
     };
+    this.click1 = new Audio(click1);
+    this.click2 = new Audio(click2);
   }
 
   // changes the BPM
