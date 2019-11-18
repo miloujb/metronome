@@ -42,7 +42,7 @@ class Metronome extends Component {
             onChange={this.handleBPMchange}
           />
         </div>
-        <button>{playing ? "Stop" : "Start"}</button>
+        <button onClick={this.startStop}>{playing ? "Stop" : "Start"}</button>
       </div>
     );
   }
