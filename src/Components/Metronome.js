@@ -1,9 +1,25 @@
 import React, { Component } from "react";
 
 class Metronome extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      playing: false,
+      count: 0,
+      bpm: 120,
+      beatsPerMeasure: 4
+    };
+  }
+
+  // changes the BPM
+
+  handleBPMchange = event => {
+    const bpm = event.target.value;
+    this.setState({ bpm });
+  };
+
   render() {
-    let bpm = 120;
-    let playing = false;
+    const { bpm, playing } = this.state;
     return (
       <div className="metronome">
         <div className="slider">
