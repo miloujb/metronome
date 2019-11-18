@@ -25,7 +25,32 @@ class Metronome extends Component {
   // starts and stops the metronome playing
 
   startStop = () => {
-    this.click1.play();
+    if (this.state.playing) {
+      // stop metronome
+      clearInterval(this.timer);
+      this.setState({ playing: false });
+    } else {
+      // start metronome
+      this.timer = setInterval(this.playClick, (60 / this.state.bpm) * 1000);
+      this.setState({ count: 0, playing: true });
+    }
+    this.playClick();
+  };
+
+  //plays clicks
+
+  playClick = () => {
+    const { count, beatsPerMeasure } = this.state;
+    // places emphasis on the first beat
+    if (count / beatsPerMeasure === 0) {
+      this.click2.play();
+    } else {
+      this.click1.play();
+    }
+    //  keeps track of beat
+    this.setState(state => ({
+      count: (state.count + 1) % state.beatsPerMeasure
+    }));
   };
 
   render() {
