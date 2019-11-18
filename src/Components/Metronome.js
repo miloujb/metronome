@@ -15,11 +15,17 @@ class Metronome extends Component {
     this.click2 = new Audio(click2);
   }
 
-  // changes the BPM
+  // changes the amount of beats per minute (BPM)
 
   handleBPMchange = event => {
     const bpm = event.target.value;
     this.setState({ bpm });
+  };
+
+  // starts and stops the metronome playing
+
+  startStop = () => {
+    this.click1.play();
   };
 
   render() {
